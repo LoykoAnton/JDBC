@@ -1,34 +1,24 @@
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-/*import static hostel.view.GuestWindowController.date;
-import static hostel.view.GuestWindowController.select;*/
-
 public class MyConnection {
 
-    private final static String URL = "jdbc:mysql://localhost:3306/world?autoReconnect=true&useSSL=false";
-    private static String USER = "newuser";
-    private static String PASS = "79137391";
+    private final static String URL = "jdbc:mysql://localhost:3306/database?autoReconnect=true&useSSL=false";
+    private static String USER = "root";
+    private static String PASS = "root";
     private Connection connection;
     private Driver driver;
     private Statement statement;
     private Set<City> city = new HashSet<>();
     private Set<Country> country = new HashSet<>();
     private Set<Language> language = new HashSet<>();
-
-    /*
-    private static int getted = 0;
-    public static int currentId = 23;
-    public static int userId = 23;
-    public static String room_type = "";*/
     private Main app;
-    //public UserInfo user;
 
     public MyConnection() {
         try {
@@ -39,7 +29,7 @@ public class MyConnection {
         }
     }
 
-  public void setApp(Main app) {
+    public void setApp(Main app) {
         this.app = app;
     }
 
@@ -57,59 +47,29 @@ public class MyConnection {
         connection.close();
         //user = null;
     }
-/*
-    public boolean logIn(String user, String pass) {
-        String sql = "select u.iduser, u.username, u.password as user_pass, p.privilege_name as privilege, p.password " +
-                "from user as u " +
-                "inner join privileges as p on u.privilege_id = p.id " +
-                "where u.username = \'" + user + "\' and u.password = MD5(\'" + pass + "\');";
-        try {
-            ResultSet resultSet = statement.executeQuery(sql);
-            if (resultSet.next()) {
-                USER = resultSet.getString("privilege");
-                PASS = resultSet.getString("password");
-                int id = resultSet.getInt("iduser");
-                String name = resultSet.getString("username");
-                close();
-                connect();
-                return true;
-            } else return false;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-/*
-    public boolean registration(String username, String pass, String firstName, String lastName, String patron, String passN, String phoneN, String mail, String reg, String loc, String str, String houseN, String appartN) {
-        String sql = "insert into user (username, password, privilege_id) values (\'" + username + "\', MD5(\'" + pass + "\'), " + "2);";
-        try {
-            statement.execute(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Создаваемый пользователь уже существует.");
-            return false;
-        }
-        idUser(username);
-        String sql2 = "insert into owner (iduser, owner_name, owner_last_name, owner_patronymic, passport, phone_num, email, discount) values (" + userId + ", " + firstName + ", " + lastName + ", " + patron + ", " + passN + ", " + phoneN + ", " + mail + ", '0%');";
-        try {
-            statement.execute(sql2);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println(e.getMessage());
-        }
-        idOwner();
-        String sql3 = "insert into address (idowner, region, locality, street, house_num, apartment_num) values (" + currentId + ", " + reg + ", " + loc + ", " + str + ", " + houseN + ", " + appartN + ");";
-        try {
-            statement.execute(sql3);
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-*/
 
-   public ObservableList<Country> getAllCountry() {
+    ObservableList<City> getCity()  {
+        ObservableList<City> list = FXCollections.observableArrayList();
+        ResultSet citySet = getResultSet("select * from city");
+        Set<City> set = new LinkedHashSet<>();
+        try {
+            while (citySet.next()) {
+                Integer id = citySet.getInt("ID");
+                String name = citySet.getString("Name");
+                String countryCode = citySet.getString("CountryCode");
+                String district = citySet.getString("District");
+                Integer population = citySet.getInt("Population");
+                set.add(new City(this, id, name, countryCode, district, population));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        city = set;
+        list.addAll(city);
+        return list;
+    }
+
+    public ObservableList<Country> getAllCountry() {
         ObservableList<Country> list = FXCollections.observableArrayList();
         list.addAll(allCountry());
         return list;
@@ -126,11 +86,12 @@ public class MyConnection {
         list.addAll(allCountry());
         return list;
     }
+
     private Set<Country> getSetCountry(ResultSet resultSet) {
         Set<Country> set = new LinkedHashSet<>();
         try {
             while (resultSet.next()) {
-                String  id = resultSet.getString("Code");
+                String id = resultSet.getString("Code");
                 String name = resultSet.getString("Name");
                 String continent = resultSet.getString("Continent");
                 String region = resultSet.getString("Region");
@@ -148,24 +109,6 @@ public class MyConnection {
         return set;
     }
 
-    public ObservableList<City> getAllCity() {
-        ObservableList<City> list = FXCollections.observableArrayList();
-        list.addAll(allCity());
-        return list;
-    }
-
-    private Set<City> allCity() {
-        String sql = "select * from city ";
-        city = getSet(getResultSet(sql));
-        return city;
-    }
-
-    public ObservableList<City> getAllSelectedCity() {
-        ObservableList<City> list = FXCollections.observableArrayList();
-        list.addAll(allCity());
-        return list;
-    }
-
     private ResultSet getResultSet(String sql) {
         try {
             return statement.executeQuery(sql);
@@ -173,23 +116,6 @@ public class MyConnection {
             e.printStackTrace();
             return null;
         }
-    }
-
-    private Set<City> getSet(ResultSet resultSet) {
-        Set<City> set = new LinkedHashSet<>();
-        try {
-            while (resultSet.next()) {
-                Integer id = resultSet.getInt("ID");
-                String name = resultSet.getString("Name");
-                String countryCode = resultSet.getString("CountryCode");
-                String district = resultSet.getString("District");
-                String dateOut = resultSet.getString("Population");
-                set.add(new City(this, id, name, countryCode, district,dateOut));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return set;
     }
 
     public ObservableList<Language> getAllLanguage() {
@@ -209,15 +135,16 @@ public class MyConnection {
         list.addAll(allCountry());
         return list;
     }
+
     private Set<Language> getSetLanguage(ResultSet resultSet) {
         Set<Language> set = new LinkedHashSet<>();
         try {
             while (resultSet.next()) {
-                String  countyCode = resultSet.getString("CountryCode");
+                String countyCode = resultSet.getString("CountryCode");
                 String language = resultSet.getString("Language");
                 String isOfficial = resultSet.getString("IsOfficial");
                 Integer persantage = resultSet.getInt("Persantage");
-                set.add(new Language(this,countyCode, language, isOfficial, persantage));
+                set.add(new Language(this, countyCode, language, isOfficial, persantage));
             }
         } catch (SQLException e) {
             e.printStackTrace();

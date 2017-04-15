@@ -1,15 +1,12 @@
 import javafx.beans.property.*;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 public class City {
     private MyConnection connection;
     private IntegerProperty id;
     private StringProperty name;
     private StringProperty countryCode;
     private StringProperty district;
-    private StringProperty population;
+    private IntegerProperty population;
 
     public Integer getId() {
         return id.get();
@@ -35,11 +32,11 @@ public class City {
         return countryCode;
     }
 
-    public String getPopulation() {
+    public int getPopulation() {
         return population.get();
     }
 
-    public StringProperty populationProperty() {
+    public IntegerProperty populationProperty() {
         return population;
     }
 
@@ -56,14 +53,12 @@ public class City {
     }
 
 
-    City(MyConnection connection, int id, String name, String countryCode, String district, String population ) {
+    City(MyConnection connection, int id, String name, String countryCode, String district, int population ) {
         this.connection = connection;
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.countryCode = new SimpleStringProperty(countryCode);
         this.district = new SimpleStringProperty(district);
-        this.population = new SimpleStringProperty(population);
+        this.population = new SimpleIntegerProperty(population);
     }
-
-
 }

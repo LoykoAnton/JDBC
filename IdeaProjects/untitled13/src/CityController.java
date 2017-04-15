@@ -1,20 +1,8 @@
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-
-import java.util.EventListener;
 
 public class CityController {
 
@@ -29,11 +17,11 @@ public class CityController {
     @FXML
     private TableColumn<City, String> nameColumn;
     @FXML
-    private TableColumn<City, String> countyCodeColumn;
+    private TableColumn<City, String> countryCodeColumn;
     @FXML
     private TableColumn<City, String> districtColumn;
     @FXML
-    private TableColumn<City, String> populationColumn;
+    private TableColumn<City, Integer> populationColumn;
     @FXML
     private TextField ID;
     @FXML
@@ -48,12 +36,12 @@ public class CityController {
     @FXML
     public void initialize() {
         connection = Main.connection;
-        list = connection.getAllCity();
+        list = connection.getCity();
         idColumn.setCellValueFactory(cellData -> cellData.getValue().IdProperty().asObject());
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        countyCodeColumn.setCellValueFactory(cellData -> cellData.getValue().countryCodeProperty());
+        countryCodeColumn.setCellValueFactory(cellData -> cellData.getValue().countryCodeProperty());
         districtColumn.setCellValueFactory(cellData -> cellData.getValue().districtProperty());
-        populationColumn.setCellValueFactory(cellData -> cellData.getValue().populationProperty());
+        populationColumn.setCellValueFactory(cellData -> cellData.getValue().IdProperty().asObject());
         table.setItems(list);
     }
 
@@ -61,4 +49,3 @@ public class CityController {
         this.main = main;
     }
 }
-
