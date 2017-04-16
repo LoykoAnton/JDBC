@@ -20,7 +20,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.stage = primaryStage;
         this.stage.setTitle("Base");
-        initCity();
+       // initCity();
+        // initCountry();
+        initLaunguage();
     }
 
     public void initCity() {
@@ -37,54 +39,42 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    private void initCountry() {
+        try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("tableCountry.fxml"));
+        root = loader.load();
+        CountryController controller = loader.getController();
+        controller.setMain(this);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    }
+
+    private void initLaunguage() {
+        try {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("tableLanguage.fxml"));
+        root = loader.load();
+        LanguageController controller = loader.getController();
+        controller.setMain(this);
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    catch (IOException e){
+        e.printStackTrace();
+    }
+}
     public static void main(String[] args) {
         connection = new MyConnection();
         connection.connect();
         launch();
     }
-    /*
-    private void initCity() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("tableCity.fxml"));
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        CityController controller = loader.getController();
-        controller.setMain(this);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    private void initCountry() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("tableCountry.fxml"));
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        CityController controller = loader.getController();
-        controller.setMain(this);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    private void initLaunguage() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("tableLanguage.fxml"));
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        CityController controller = loader.getController();
-        controller.setMain(this);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+
     /*public void initGuestLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();

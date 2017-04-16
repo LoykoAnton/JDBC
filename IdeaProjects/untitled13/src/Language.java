@@ -9,7 +9,7 @@ public class Language {
     private StringProperty countryCode;
     private StringProperty language;
     private StringProperty isOfficial;
-    private IntegerProperty percantage;
+    private IntegerProperty percentage;
 
     public String getCountryCode() {
         return countryCode.get();
@@ -35,12 +35,12 @@ public class Language {
         return isOfficial;
     }
 
-    public Integer getPercantage() {
-        return percantage.get();
+    public Integer getPercentage() {
+        return percentage.get();
     }
 
-    public IntegerProperty percantageProperty() {
-        return percantage;
+    public IntegerProperty percentageProperty() {
+        return percentage;
     }
 
     Language(MyConnection connection, String countryCode, String language, String isOfficial, int pepcantage) {
@@ -48,6 +48,6 @@ public class Language {
         this.countryCode = new SimpleStringProperty(countryCode);
         this.language = new SimpleStringProperty(language);
         this.isOfficial = new SimpleStringProperty(isOfficial);
-        this.percantage = new SimpleIntegerProperty(pepcantage);
+        this.percentage = new SimpleIntegerProperty(pepcantage);
     }
 }

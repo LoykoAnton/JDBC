@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LanguageController">
    <center>
       <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn id="idCountryCode" fx:id="countryCodeColumn" prefWidth="97.0" text="CountryCode" />
           <TableColumn id="idLanguage" fx:id="languageColumn" prefWidth="79.0" text="Language" />
             <TableColumn id="idIsOfficial" fx:id="isOfficialColumn" prefWidth="75.0" text="IsOfficial" />
-            <TableColumn id="idPercentage" fx:id="percantageColumn" prefWidth="100.0" text="Percentage" />
+            <TableColumn id="idPercentage" fx:id="percentageColumn" prefWidth="100.0" text="Percentage" />
         </columns>
       </TableView>
    </center>

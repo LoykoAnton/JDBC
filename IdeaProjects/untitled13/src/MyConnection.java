@@ -9,9 +9,9 @@ import java.util.Set;
 
 public class MyConnection {
 
-    private final static String URL = "jdbc:mysql://localhost:3306/database?autoReconnect=true&useSSL=false";
-    private static String USER = "root";
-    private static String PASS = "root";
+    private final static String URL = "jdbc:mysql://localhost:3306/world?autoReconnect=true&useSSL=false";
+    private static String USER = "newuser";
+    private static String PASS = "79137391";
     private Connection connection;
     private Driver driver;
     private Statement statement;
@@ -76,7 +76,7 @@ public class MyConnection {
     }
 
     private Set<Country> allCountry() {
-        String sql = "select Id, Name, CountryCode, District, Population from country ";
+        String sql = "select Code, Name, Continent, Region,  continent, region, surfaceArea, indepYear, population, gnp, localName, capital from country ";
         country = getSetCountry(getResultSet(sql));
         return country;
     }
@@ -91,7 +91,7 @@ public class MyConnection {
         Set<Country> set = new LinkedHashSet<>();
         try {
             while (resultSet.next()) {
-                String id = resultSet.getString("Code");
+                String code = resultSet.getString("Code");
                 String name = resultSet.getString("Name");
                 String continent = resultSet.getString("Continent");
                 String region = resultSet.getString("Region");
@@ -101,7 +101,7 @@ public class MyConnection {
                 Integer gnp = resultSet.getInt("GNP");
                 String localName = resultSet.getString("LocalName");
                 Integer capital = resultSet.getInt("Capital");
-                set.add(new Country(this, id, name, continent, region, surfaceArea, indepYear, population, gnp, localName, capital));
+                set.add(new Country(this, code, name, continent, region, surfaceArea, indepYear, population, gnp, localName, capital));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -125,14 +125,14 @@ public class MyConnection {
     }
 
     private Set<Language> allLanguage() {
-        String sql = "select * from languagecountry ";
+        String sql = "select * from countrylanguage ";
         language = getSetLanguage(getResultSet(sql));
         return language;
     }
 
-    public ObservableList<Country> getAllSelectedLanguage() {
-        ObservableList<Country> list = FXCollections.observableArrayList();
-        list.addAll(allCountry());
+    public ObservableList<Language> getAllSelectedLanguage() {
+        ObservableList<Language> list = FXCollections.observableArrayList();
+        list.addAll(allLanguage());
         return list;
     }
 
@@ -140,11 +140,11 @@ public class MyConnection {
         Set<Language> set = new LinkedHashSet<>();
         try {
             while (resultSet.next()) {
-                String countyCode = resultSet.getString("CountryCode");
+                String countryCode = resultSet.getString("CountryCode");
                 String language = resultSet.getString("Language");
                 String isOfficial = resultSet.getString("IsOfficial");
-                Integer persantage = resultSet.getInt("Persantage");
-                set.add(new Language(this, countyCode, language, isOfficial, persantage));
+                Integer persentage = resultSet.getInt("Persentage");
+                set.add(new Language(this, countryCode, language, isOfficial, persentage));
             }
         } catch (SQLException e) {
             e.printStackTrace();

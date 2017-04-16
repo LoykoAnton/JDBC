@@ -30,7 +30,7 @@ public class LanguageController {
     @FXML
     private TableColumn<Language, String> isOfficialColumn;
     @FXML
-    private TableColumn<Language, Integer> percantageColumn;
+    private TableColumn<Language, Integer> percentageColumn;
     @FXML
     private TextField idCountryCode;
     @FXML
@@ -47,7 +47,7 @@ public class LanguageController {
         countryCodeColumn.setCellValueFactory(cellData -> cellData.getValue().countryCodeProperty());
         languageColumn.setCellValueFactory(cellData -> cellData.getValue().languageProperty());
         isOfficialColumn.setCellValueFactory(cellData -> cellData.getValue().isOfficialProperty());
-        percantageColumn.setCellValueFactory(cellData -> cellData.getValue().percantageProperty().asObject());
+        percentageColumn.setCellValueFactory(cellData -> cellData.getValue().percentageProperty().asObject());
         table.setItems(list);
     }
 
