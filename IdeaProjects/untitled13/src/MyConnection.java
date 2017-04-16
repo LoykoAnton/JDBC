@@ -143,8 +143,8 @@ public class MyConnection {
                 String countryCode = resultSet.getString("CountryCode");
                 String language = resultSet.getString("Language");
                 String isOfficial = resultSet.getString("IsOfficial");
-                Integer persentage = resultSet.getInt("Persentage");
-                set.add(new Language(this, countryCode, language, isOfficial, persentage));
+                Integer percentage = resultSet.getInt("Percentage");
+                set.add(new Language(this, countryCode, language, isOfficial, percentage));
             }
         } catch (SQLException e) {
             e.printStackTrace();

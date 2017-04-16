@@ -21,7 +21,7 @@ public class Main extends Application {
         this.stage = primaryStage;
         this.stage.setTitle("Base");
        // initCity();
-        // initCountry();
+        //initCountry();
         initLaunguage();
     }
 
