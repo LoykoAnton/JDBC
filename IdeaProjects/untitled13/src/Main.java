@@ -19,7 +19,7 @@ public class Main extends Application {
         initMain();
     }
 
-    public void initMain() {
+    private void initMain() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("main.fxml"));
@@ -45,7 +45,7 @@ public class Main extends Application {
         }
     }
 
-    public void setCountry() {
+    void setCountry() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("tableCountry.fxml"));
@@ -55,7 +55,7 @@ public class Main extends Application {
         }
     }
 
-    public void setLanguage() {
+    void setLanguage() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("tableLanguage.fxml"));
