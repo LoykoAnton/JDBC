@@ -10,8 +10,8 @@ import java.util.Set;
 public class MyConnection {
 
     private final static String URL = "jdbc:mysql://localhost:3306/world?autoReconnect=true&useSSL=false";
-    private static String USER = "newuser";
-    private static String PASS = "79137391";
+    private static String USER = "root";
+    private static String PASS = "root";
     private Connection connection;
     private Driver driver;
     private Statement statement;

@@ -4,14 +4,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="754.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="29.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Города" />
-            <Button mnemonicParsing="false" onAction="#onLanguage" text="Языки" />
-            <Button mnemonicParsing="false" text="Страны" />
+            <Button mnemonicParsing="false" onAction="#OnCity" text="Города" />
+            <Button mnemonicParsing="false" onAction="#OnLanguage" text="Языки" />
+            <Button mnemonicParsing="false" onAction="#OnCountry" text="Страны" />
          </children>
       </HBox>
    </top>

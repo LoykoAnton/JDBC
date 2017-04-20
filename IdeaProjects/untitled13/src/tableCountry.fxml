@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CountryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CountryController">
    <top>
       <HBox prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -17,7 +17,7 @@
       </HBox>
    </top>
    <bottom>
-      <TableView fx:id="table" prefHeight="344.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" prefHeight="379.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn id="idCode" fx:id="codeColumn" prefWidth="75.0" text="Code" />
           <TableColumn id="idName" fx:id="nameColumn" prefWidth="75.0" text="Name" />
@@ -35,7 +35,4 @@
          </columnResizePolicy>
       </TableView>
    </bottom>
-   <center>
-      <HBox prefHeight="20.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LanguageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LanguageController">
    <top>
       <HBox prefHeight="24.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -18,17 +18,20 @@
       </HBox>
    </top>
    <bottom>
-      <TableView fx:id="table" prefHeight="946.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" prefHeight="465.0" prefWidth="606.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn id="idCountryCode" fx:id="countryCodeColumn" prefWidth="277.00001525878906" text="CountryCode" />
-          <TableColumn id="idLanguage" fx:id="languageColumn" prefWidth="227.0" text="Language" />
-            <TableColumn id="idIsOfficial" fx:id="isOfficialColumn" prefWidth="237.0" text="IsOfficial" />
-            <TableColumn id="idPercentage" fx:id="percentageColumn" prefWidth="258.0" text="Percentage" />
+          <TableColumn id="idCountryCode" fx:id="countryCodeColumn" prefWidth="150.0" text="CountryCode" />
+          <TableColumn id="idLanguage" fx:id="languageColumn" prefWidth="110.0" text="Language" />
+            <TableColumn id="idIsOfficial" fx:id="isOfficialColumn" prefWidth="147.0" text="IsOfficial" />
+            <TableColumn id="idPercentage" fx:id="percentageColumn" prefWidth="102.0" text="Percentage" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
    </bottom>
    <center>
-      <HBox prefHeight="383.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="15.0" prefWidth="606.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="idCountryCode" />
             <TextField fx:id="idLanguage" />

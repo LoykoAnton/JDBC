@@ -67,5 +67,3 @@ public class LanguageController {
         this.main = main;
     }
 }
-
-//vgsfg
