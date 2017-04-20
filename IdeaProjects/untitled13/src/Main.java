@@ -35,7 +35,7 @@ public class Main extends Application {
         }
     }
 
-    public void setCity() {
+    void setCity() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("tableCity.fxml"));
