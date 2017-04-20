@@ -20,11 +20,26 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.stage = primaryStage;
         this.stage.setTitle("Base");
-       // initCity();
-        //initCountry();
-        initLaunguage();
+       //initCity();
+       //initCountry();
+       initLaunguage();
+        //initMain();
     }
-
+    public void initMain() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("main.fxml"));
+            root = loader.load();
+            CityController controller = loader.getController();
+            controller.setMain(this);
+            Scene scene = new Scene(root);
+            stage.setTitle("Main");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void initCity() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -60,6 +75,7 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("tableLanguage.fxml"));
         root = loader.load();
         LanguageController controller = loader.getController();
+        stage.setTitle("Language");
         controller.setMain(this);
         Scene scene = new Scene(root);
         stage.setScene(scene);

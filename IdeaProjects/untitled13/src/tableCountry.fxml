@@ -11,7 +11,7 @@
       <HBox prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" text="Главная" />
-            <Button mnemonicParsing="false" text="Удалить" />
+            <Button mnemonicParsing="false" onAction="#onDelete" text="Удалить" />
             <Button mnemonicParsing="false" text="Добавить" />
          </children>
       </HBox>

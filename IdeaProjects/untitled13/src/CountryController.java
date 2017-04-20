@@ -79,6 +79,11 @@ public class CountryController {
         populationColumn.setCellValueFactory(cellData -> cellData.getValue().populationProperty().asObject());
         table.setItems(list);
     }
+    @FXML
+    private void onDelete () {
+        connection.deleteCountry(table.getSelectionModel().getSelectedItem().codeProperty().getValue());
+        initialize();
+    }
 
     public void setMain(Main main) {
         this.main = main;

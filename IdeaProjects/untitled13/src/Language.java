@@ -9,7 +9,7 @@ public class Language {
     private StringProperty countryCode;
     private StringProperty language;
     private StringProperty isOfficial;
-    private IntegerProperty percentage;
+    private DoubleProperty percentage;
 
     public String getCountryCode() {
         return countryCode.get();
@@ -35,19 +35,19 @@ public class Language {
         return isOfficial;
     }
 
-    public Integer getPercentage() {
+    public Double getPercentage() {
         return percentage.get();
     }
 
-    public IntegerProperty percentageProperty() {
+    public DoubleProperty percentageProperty() {
         return percentage;
     }
 
-    Language(MyConnection connection, String countryCode, String language, String isOfficial, int pepcantage) {
+    Language(MyConnection connection, String countryCode, String language, String isOfficial, Double pepcantage) {
         this.connection = connection;
         this.countryCode = new SimpleStringProperty(countryCode);
         this.language = new SimpleStringProperty(language);
         this.isOfficial = new SimpleStringProperty(isOfficial);
-        this.percentage = new SimpleIntegerProperty(pepcantage);
+        this.percentage = new SimpleDoubleProperty(pepcantage);
     }
 }

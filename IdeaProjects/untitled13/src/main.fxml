@@ -10,7 +10,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" text="Города" />
-            <Button mnemonicParsing="false" text="Языки" />
+            <Button mnemonicParsing="false" onAction="#onLanguage" text="Языки" />
             <Button mnemonicParsing="false" text="Страны" />
          </children>
       </HBox>

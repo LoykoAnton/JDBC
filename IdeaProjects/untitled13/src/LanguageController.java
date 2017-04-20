@@ -30,7 +30,7 @@ public class LanguageController {
     @FXML
     private TableColumn<Language, String> isOfficialColumn;
     @FXML
-    private TableColumn<Language, Integer> percentageColumn;
+    private TableColumn<Language, Double> percentageColumn;
     @FXML
     private TextField idCountryCode;
     @FXML
@@ -49,6 +49,18 @@ public class LanguageController {
         isOfficialColumn.setCellValueFactory(cellData -> cellData.getValue().isOfficialProperty());
         percentageColumn.setCellValueFactory(cellData -> cellData.getValue().percentageProperty().asObject());
         table.setItems(list);
+    }
+
+    @FXML
+    private void onDelete () {
+        connection.deleteLanguage(table.getSelectionModel().getSelectedItem().countryCodeProperty().getValue(), table.getSelectionModel().getSelectedItem().languageProperty().getValue());
+        initialize();
+    }
+
+    @FXML
+    public void OnInsert () {
+        connection.addLanguage(idCountryCode.getText(), idLanguage.getText(), idIsOfficial.getText(), Integer.parseInt(idPercentage.getText()));
+        initialize();
     }
 
     public void setMain(Main main) {

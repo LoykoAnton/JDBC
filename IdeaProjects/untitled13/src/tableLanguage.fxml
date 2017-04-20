@@ -12,28 +12,28 @@
       <HBox prefHeight="24.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" text="Главная" />
-            <Button mnemonicParsing="false" text="Удалить" />
-            <Button mnemonicParsing="false" text="Добавить" />
+            <Button mnemonicParsing="false" onAction="#onDelete" text="Удалить" />
+            <Button mnemonicParsing="false" onAction="#OnInsert" text="Добавить" />
          </children>
       </HBox>
    </top>
    <bottom>
       <TableView fx:id="table" prefHeight="946.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn id="idCountryCode" fx:id="countryCodeColumn" prefWidth="97.0" text="CountryCode" />
-          <TableColumn id="idLanguage" fx:id="languageColumn" prefWidth="79.0" text="Language" />
-            <TableColumn id="idIsOfficial" fx:id="isOfficialColumn" prefWidth="75.0" text="IsOfficial" />
-            <TableColumn id="idPercentage" fx:id="percentageColumn" prefWidth="100.0" text="Percentage" />
+          <TableColumn id="idCountryCode" fx:id="countryCodeColumn" prefWidth="277.00001525878906" text="CountryCode" />
+          <TableColumn id="idLanguage" fx:id="languageColumn" prefWidth="227.0" text="Language" />
+            <TableColumn id="idIsOfficial" fx:id="isOfficialColumn" prefWidth="237.0" text="IsOfficial" />
+            <TableColumn id="idPercentage" fx:id="percentageColumn" prefWidth="258.0" text="Percentage" />
         </columns>
       </TableView>
    </bottom>
    <center>
       <HBox prefHeight="383.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField />
-            <TextField />
-            <TextField />
-            <TextField />
+            <TextField fx:id="idCountryCode" />
+            <TextField fx:id="idLanguage" />
+            <TextField fx:id="idIsOfficial" />
+            <TextField fx:id="idPercentage" />
          </children>
       </HBox>
    </center>

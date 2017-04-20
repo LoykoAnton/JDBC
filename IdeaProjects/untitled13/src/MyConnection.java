@@ -68,6 +68,14 @@ public class MyConnection {
         list.addAll(city);
         return list;
     }
+    public void deleteCity(int id){
+        String sql = "DELETE FROM `world`.`city` WHERE `id`= '"+id+"'";
+        try {
+            statement.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public ObservableList<Country> getAllCountry() {
         ObservableList<Country> list = FXCollections.observableArrayList();
@@ -108,6 +116,14 @@ public class MyConnection {
         }
         return set;
     }
+    public void deleteCountry(String code){
+        String sql = "DELETE FROM `world`.`country` WHERE `Code`= '"+code+"'";
+        try {
+            statement.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     private ResultSet getResultSet(String sql) {
         try {
@@ -143,12 +159,31 @@ public class MyConnection {
                 String countryCode = resultSet.getString("CountryCode");
                 String language = resultSet.getString("Language");
                 String isOfficial = resultSet.getString("IsOfficial");
-                Integer percentage = resultSet.getInt("Percentage");
-                set.add(new Language(this, countryCode, language, isOfficial, percentage));
+                Double percentage = resultSet.getDouble("Percentage");
+                set.add(new Language(this, countryCode, language, isOfficial,percentage));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return set;
     }
+    public void deleteLanguage(String countryCode,  String language){
+        String sql = "DELETE FROM `world`.`countrylanguage` WHERE `CountryCode` = '" + countryCode + "' and `Language` = '" + language + "'";
+        try {
+            statement.execute(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public boolean addLanguage(String countryCode, String language, String isOfficial, int percentage) {
+        String sql = "insert into countrylanguage (CountryCode, Language, IsOfficial, Percentage) values ('" + countryCode + "', '" + language + "', '" + isOfficial + "', '" + percentage +"';";
+        try {
+            statement.execute(sql);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+

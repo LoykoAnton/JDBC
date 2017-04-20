@@ -44,6 +44,11 @@ public class CityController {
         populationColumn.setCellValueFactory(cellData -> cellData.getValue().IdProperty().asObject());
         table.setItems(list);
     }
+    @FXML
+    private void onDelete () {
+        connection.deleteCity(table.getSelectionModel().getSelectedItem().IdProperty().getValue());
+        initialize();
+    }
 
     public void setMain(Main main) {
         this.main = main;
